@@ -15,12 +15,13 @@ char* longestCommonPrefix(char** strs, int strsSize)
     while( strs[0][i] != '\0' && strs[1][i] != '\0' && strs[0][i] == strs[1][i])
     {
         prefix[i] = strs[0][i];
-        prefix = realloc(prefix , i+2);
-        if(!prefix)
+        char *tmp  = realloc(prefix , i+2);
+        if(!tmp)
         {
             free(prefix);
             return NULL;
         }
+        prefix = tmp;
         i++;
     }
     prefix[i] = '\0';
